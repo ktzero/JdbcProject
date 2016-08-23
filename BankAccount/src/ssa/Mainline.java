@@ -1,12 +1,13 @@
 package ssa;
 
+//testing class for original Account class
 public class Mainline {
 
 	private static int transId;
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		
 		//main keeps track of transactions for all accounts
 		//so that transactions between accounts are unique too
 		transId = 0;
