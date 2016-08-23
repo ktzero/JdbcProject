@@ -50,9 +50,9 @@ public class Account {
 	  //will return true 
 	 public boolean deposit(double amt) 
 	 { 	
-		 System.out.printf("Deposited $%.2f. ", amt); 
+		 //System.out.printf("Deposited $%.2f. ", amt); 
 		 this.setBalance(balance + amt);
-		 currentBalance();
+		 //currentBalance();
 		 return true;
 	 }
 	 
@@ -63,14 +63,14 @@ public class Account {
 	    if(amt > balance) 
 	    {
 	    	System.out.println("Insufficient funds in " + this.getDescription() + "!");
-	    	currentBalance();
+	    	//currentBalance();
 	    	return false;
 	    } 
 	    else 
 	    {
-	    	System.out.printf("Withdrew $%.2f. ",amt); 
+	    	//System.out.printf("Withdrew $%.2f. ",amt); 
 	    	this.setBalance(balance - amt);
-	    	currentBalance(); 
+	    	//currentBalance(); 
 	    	return true;
 	    }
 	 }
@@ -87,11 +87,11 @@ public class Account {
 		  if(account.withdraw(amount))
 		  {
 			  deposit(amount);
-			  System.out.printf("Successfully transferred $%.2f from %s to %s \n", 
-					  amount, account.getDescription(), description);
+			  //System.out.printf("Successfully transferred $%.2f from %s to %s \n", 
+				//	  amount, account.getDescription(), description);
 		  }
-		  else
-			  System.out.println("Unable to transfer due to insufficient funds in " + account.getDescription());
+		  //else
+			  //System.out.println("Unable to transfer due to insufficient funds in " + account.getDescription());
 	  }
 	  
 	  //setters and getters for each instance variable

@@ -36,6 +36,7 @@ public class Mainline2 {
 		checking1.transferFrom(savings1, 100.00); // transfer 100 from savings to checking
 		// another account
 		Account checking2 = new Account("My slush fund checking account");
+		Account checking3 = new Account(1,"my account");
 		checking2.deposit(300.00);
 		checking2.print();
 		checking2.withdraw(150.00);
@@ -50,6 +51,7 @@ public class Mainline2 {
 		System.out.println(checking1.print());
 		System.out.println(checking2.print());
 		System.out.println(savings1.print());
+		System.out.println(checking3.print());
 
 		//## Protect the class data
 		//For our Account class, we do not want any access to our class data from outside our class. In order to make sure our data cannot be access outside the class, you need to add the access modifier `private` before all the types for the data. It would looks something like this:
