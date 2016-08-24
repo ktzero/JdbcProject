@@ -44,32 +44,36 @@ public class Account {
 	  // returns the account info as a string
 	 public String print() 
 	 {
-	    return "Account " + id + " balance is $" + String.format("%.2f", balance); 
+	    return "Account " + id + " balance is " + String.format("$%.2f", getBalance()); 
 	 }
 	  // deposit into the account
 	  //will return true 
 	 public boolean deposit(double amt) 
 	 { 	
-		 //System.out.printf("Deposited $%.2f. ", amt); 
-		 this.setBalance(balance + amt);
-		 //currentBalance();
-		 return true;
+		 if(amt >= 0)
+		 {
+			 //System.out.printf("Deposited $%.2f. ", amt); 
+			 this.setBalance(getBalance() + amt);
+			 //currentBalance();
+			 return true;
+		 }
+		 else return false;
 	 }
 	 
 	  // withdraw from the account, but cannot go negative
 	  //will return true for successful withdrawal, or false otherwise
 	 public boolean withdraw(double amt) 
 	 {
-	    if(amt > balance) 
+	    if(amt > getBalance() || amt < 0) 
 	    {
-	    	System.out.println("Insufficient funds in " + this.getDescription() + "!");
+	    	//System.out.println("Insufficient funds in " + this.getDescription() + "!");
 	    	//currentBalance();
 	    	return false;
 	    } 
 	    else 
 	    {
 	    	//System.out.printf("Withdrew $%.2f. ",amt); 
-	    	this.setBalance(balance - amt);
+	    	this.setBalance(getBalance() - amt);
 	    	//currentBalance(); 
 	    	return true;
 	    }
@@ -78,7 +82,7 @@ public class Account {
 	 //prints out current balance
 	  public void currentBalance()
 	  {
-		  System.out.printf("%s balance: $%.2f\n",description, balance);
+		  System.out.printf("%s balance: $%.2f\n",getDescription(), this.getBalance());
 	  }
 	  
 	  //transfer money from another account
