@@ -39,7 +39,11 @@ public class Account {
 	  
 	  //constructor to set balance when account is created
 	  public Account(double aBalance)
-	  {	  this.setBalance(aBalance); }
+	  {	  
+		  this.setBalance(aBalance); 
+		  this.setId();
+		  this.setDescription("A default account");
+	  }
 	  
 	  // returns the account info as a string
 	 public String print() 
