@@ -1,0 +1,131 @@
+Kevin Tran
+
+Dice
+
+-found logic bug that even number is always rolled. Using the debugger, I found that if an
+odd number was rolled, it was being rolled in pairs so the sum is always even.
+-I corrected it by creating my random number generator inside the constructor instead of 
+calling it inside of the method call every single time I "roll" a die 
+
+	public Die()
+	{
+		diceNumber = 0;
+		long seed = (new java.util.Date().getTime());
+		rnd = new java.util.Random(seed);
+	}
+	
+	public int rollDie()
+	{	
+		return rnd.nextInt(6) + 1;
+	}
+
+=====================================================
+Simple Craps
+
+-I was not able to find any bugs with this program
+
+
+=====================================================
+RPNCalculator
+
+-found bug where dividing by 0 makes my program terminate
+-I fixed it by adding a case to handle division by 0
+
+	private static Integer calculate(Integer n1, Integer n2, String op)
+	{
+		if(n2 == 0 && op.equals("/"))
+		{
+			return 0;
+		}
+		else
+		{
+			switch(op)
+			{
+				case "+": return n1 + n2;
+				case "-": return n1 - n2;
+				case "*": return n1 * n2;
+				case "/": return n1 / n2;
+				default: System.out.println("Invalid operand");
+						 return 0;
+			
+			}
+		}
+	}
+
+================================================
+BankAccount
+
+-I found a bug where if a negative number was entered into the months field for calcDeposit,
+a negative interest paid amount is calculated but there is no change to the actual bankAccount.
+This shows the deposit method covered that scenario, but not the interest calculation.
+-I corrected it by adding a case to handle negative month entries
+
+	public void calcDepositInterest(int months)
+	{
+		if(months >= 0)
+		{
+			if(super.getBalance() >= this.getMinBal())
+			{
+				double intPerMonth = interestRate / 12;
+				double calcInt = intPerMonth * months * super.getBalance();
+				super.deposit(calcInt);
+				interestAccrued += calcInt;
+			}
+		}
+	}
+
+=================================================
+BowlingGame
+
+-I found a bug where the program will terminate if a negative number is introduced for the
+number of games played because of a negative array size
+-I corrected this by handling the negative number case.  I took your advice about starting with
+the most complex constructor, and setting up all of my variables/values there, and then building
+up to the simplest (default) constructor that calls the most complex constructor, but with null
+or 0 values.  Thus the negative number is directly handled.
+
+	//bowlingScores has variable number of games and 11 spaces
+	//10 for frames and 1 for the sum of all frames
+	//assuming the frames will not change
+	public SimulatedBowling()
+	{	
+		this(3);
+	}
+	
+	//constructor for a variable amount of games 
+	public SimulatedBowling(int numgames)
+	{
+		if(numgames > 0)
+		{
+			totalGames = numgames;
+			//bowlingScores = new int[totalGames][11];
+			bowlingScores = new Score[totalGames][11];
+		}
+		else
+		{
+			System.out.println("Invalid number of games, will default to 3");
+			totalGames = 3;
+			bowlingScores = new Score[totalGames][11];
+		}
+		setConditions();
+	}
+
+====================================================
+ClassRosterAndDatabase (Student)
+
+-The negative int value for MonthsEmployed is a logic problem but does not cause any termination.
+-I corrected it by handling it in the constructor
+	
+	public Student(String id, String fName, String lName, String eye, int monEmployed)
+	{
+		this.id = id;
+		firstName = fName;
+		lastName = lName;
+		eyeColor = eye;
+		if(monthsEmployed < 0)
+		{	monthsEmployed = 0;	}
+		else
+		{	monthsEmployed = monEmployed;	}
+	}
+
+
